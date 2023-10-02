@@ -1,0 +1,70 @@
+.center-top {
+    width: 100%;
+
+    .center-top-img {
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .center-top-title {
+        font-size: 5rem;
+        font-weight: 700;
+        letter-spacing: 0.9rem;
+        color: #fff;
+        text-shadow: 0 0.4rem 0.14rem #537274;
+        padding: 0.5rem 0.5rem;
+        position: absolute;
+        top: 3rem;
+    }
+
+}
+
+.center-middle {
+    width: 100%;
+    margin-bottom: 0.625rem;
+
+    .center-middle-box {
+
+        .center-middle-box-head {
+            padding: 0.5rem 0;
+            font-size: 1.625rem;
+        }
+
+        .center-middle-box-main {
+            display: flex;
+            flex-direction: row;
+            overflow-x: auto;
+            max-width: 80vw;
+            background: #fff;
+            min-height: 5rem;
+            align-items: center;
+            
+            .center-middle-box-main-item {
+                width: 11rem;
+                margin: 0.625rem 0.1rem;
+
+                .center-middle-main-item-feature-img {}
+
+                .center-middle-main-item-feature-tit {}
+            }
+        }
+
+        .center-middle-box-main::-webkit-scrollbar {
+            width: .1rem;
+            /* width of the entire scrollbar */
+        }
+
+        .center-middle-box-main::-webkit-scrollbar-track {
+            background: #fff;
+            /* color of the tracking area */
+        }
+
+        .center-middle-box-main::-webkit-scrollbar-thumb {
+            background-color: #bebebe;
+            border-radius: .625rem;
+        }
+
+    }
+}

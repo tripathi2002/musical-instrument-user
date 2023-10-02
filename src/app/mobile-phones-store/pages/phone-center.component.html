@@ -1,0 +1,47 @@
+<div class="center-top">
+    <div class="center-top-img">
+        <img [src]="centerTop.background" alt="">
+    </div>
+    <div class="center-top-title">
+        {{centerTop.title}}
+    </div>
+</div>
+<div class="center-middle" *ngFor="let box of centerMiddle">
+
+    <div class="center-middle-box">
+        <div class="center-middle-box-head">{{box.title}}</div>
+        <div class="center-middle-box-main" *ngIf="box['items'].length>0">
+            <ng-container 
+                [ngTemplateOutlet]="box.outlet===1?first:last"
+                [ngTemplateOutletContext]="{items:box.items}"
+            >
+            </ng-container>
+            
+        </div>
+    </div>
+</div>
+
+
+
+<ng-template #first let-items="items">
+    <div class="center-middle-box-main-item" *ngFor="let item of items">
+        <a [routerLink]="item.routerlink">
+            <div class="center-middle-box-main-item-feature-img">
+                <img [src]="item.img" alt="">
+            </div>
+            <div class="center-middle-box-main-item-feature-tit">
+                {{ item.title}}
+            </div>
+        </a>
+    </div>
+</ng-template>
+
+<ng-template #last let-items="items">
+    <div class="center-middle-box-main-item" *ngFor="let item of items">
+        <a [routerLink]="item.routerlink">
+            <div class="center-middle-box-main-item-feature-img">
+                <img [src]="item.img" alt="">
+            </div>
+        </a>
+    </div>
+</ng-template>

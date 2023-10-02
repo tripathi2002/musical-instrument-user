@@ -1,0 +1,18 @@
+.left-box {
+    margin-left: .625rem;
+
+    .left-box-heading {
+        font-weight: 700;
+        letter-spacing: .0625rem;
+        font-size: 1.25rem;
+        padding: 0.1rem 0.25rem;
+        margin: 0.25rem 0rem;
+    }
+    
+    .left-box-item {
+        margin: 0.1rem 0.25rem;
+        padding: 0.1625rem;
+        cursor: pointer;
+        background: #f4f7fa;
+    }
+}

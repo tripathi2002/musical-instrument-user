@@ -1,0 +1,106 @@
+<div class="head">
+    <div class="head-content">
+        
+
+        <div class="head-content-left">
+            <div class="logo-container">
+                <button class="logo" >VT</button>
+                
+            </div>
+            <div class="search-container">
+                <div *ngIf="!canShowSearchAsOverlay" class="normal-search">
+                    <input type="search" 
+                        class="search"
+                        placeholder="Search..."
+                        >
+                        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                </div>
+                <div *ngIf="canShowSearchAsOverlay">
+                    <button
+                        [cdkMenuTriggerFor]="searchOverlay"
+                        class="search-menu-btn ripple"
+                    >
+                        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="head-content-right">
+            <div class="head-menu">
+                <div class="head-menu-item">
+                    <button class="head-menu-item-btn ripple"
+                        [cdkMenuTriggerFor]="languageOverlay"
+                    >
+                        <img [src]="'assets/flags/'+ selectedLanguage.flag +'.jpg'" alt="flag" class="flag">
+                    </button>
+                </div>
+                <div class="head-menu-item">
+                    <button class="head-menu-item-btn ripple">
+                        <i class="fa-solid fa-expand menu-icon"></i>
+                    </button>
+                </div>
+                <div class="head-menu-item">
+                    <button class="head-menu-item-btn ripple">
+                        <i class="far fa-bell menu-icon"></i>
+                    </button>
+                </div>
+                <div class="head-menu-item">
+                    <button class="head-menu-item-btn ripple">
+                        <i class="far fa-comment-alt menu-icon"></i>
+                    </button>
+                </div>
+                <div class="head-menu-item">
+                    <button class="head-menu-item-btn ripple" 
+                        [routerLink]="'cart'"
+                        routerLinkActive="active"
+                    >
+                        <i class="fa fa-cart-plus menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="head-user-avatar-container" >
+                <div class="head-user-avatar"
+                    [cdkMenuTriggerFor]="userOverlay"
+                >
+                    <img src="../../assets/flags/user-icon.jpg" alt="user" class="user-avatar">
+                    <div class="circle-indicator pluse"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #searchOverlay>
+    <div class="overlay overlay-search overlay-fall" cdkMenu>
+        <input type="search" class="search" placeholder="Search...">
+        <button class="search-btn">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        </button>
+    </div>
+</ng-template>
+
+<ng-template #languageOverlay>
+    <div class="overlay overlay-language overlay-fall" cdkMenu>
+        <ul>
+            <li *ngFor="let lang of languages" cdkMenuItem>
+                <img [src]="'assets/flags/'+ lang.flag + '.jpg'" alt="flag">
+                <span>{{lang.languages}}</span>
+            </li>
+        </ul>
+    </div>
+</ng-template>
+
+<ng-template #userOverlay>
+    <div class="overlay overlay-user overlay-fall" cdkMenu>
+        <ul>
+            <li *ngFor="let item of userItems" > 
+                <a [routerLink]="item.routeLink" cdkMenuItem>
+                    <i  class="icon" [ngClass]="item.icon"></i>
+                    <span>{{item.label}}</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+</ng-template>

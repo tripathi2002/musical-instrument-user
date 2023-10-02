@@ -1,0 +1,19 @@
+<div class="left-box" *ngFor="let box of data">
+    <div class="left-box-heading">
+        {{box.heading}}
+    </div>
+    <ng-container *ngIf="box.items.length>0" 
+        [ngTemplateOutlet]="filters" 
+        [ngTemplateOutletContext]="{items:box.items}"
+    >
+    </ng-container>
+    <hr>
+</div>
+
+<ng-template #filters let-items="items">
+    <div class="left-box-item" *ngFor="let item of items">
+        <div class="left-box-item value">
+            {{item.label}}
+        </div> 
+    </div>
+</ng-template>

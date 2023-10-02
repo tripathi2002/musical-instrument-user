@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="container-title">
+        {{title}}
+    </div>
+    <div class="form">
+        <form class="form-menu" 
+            [formGroup]="userDetails"
+            (ngSubmit)="onSubmit()"
+        >
+            <div class="form-menu-item" *ngFor="let item of userbase">
+                <div class="form-menu-item-label">
+                    <label [for]="item.id" class="form-menu-item-label-name">
+                        {{ item.placeholder }}
+                    </label>
+                </div>
+                <div class="form-menu-item-name">
+                    <input  [type]="item.type" class="form-menu-item-name-value"
+                        [id]="item.id"
+                        [name]="item.name"
+                        [formControlName]="item.name"
+                    >
+                </div>
+            </div>
+            <div class="form-menu-submit">
+                <button class="form-menu-submit-btn" type="submit" >Submit</button>
+            </div>
+        </form>
+    </div>
+    <div  class="container-skip">
+        <ng-container *ngIf="toggle; else toggleOff" >
+            Already have an account! 
+            <a routerLink="../login"
+            >Login</a>
+        </ng-container>
+    </div>
+
+    <!-- <div class="error" [ngClass]="isError?'pluse':''"> -->
+    <div class="error" [ngClass]="{'inError': isError, 'outError':!isError}">
+        <span *ngIf="isError">{{message}}</span>
+    </div>
+    <div class="loading" [ngClass]="{'in':isLoading, 'out':!isLoading}" *ngIf="isLoading">
+        <div class="loading-box">
+            <img class="lodaing-box-img" src="../../../assets/images/loading.gif" alt="loading image">
+        </div>
+    </div>
+</div>
+
+<ng-template #toggleOff>
+        New User!
+        <a routerLink="../create"
+        >SignIn</a>
+</ng-template>
