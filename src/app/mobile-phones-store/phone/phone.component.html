@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="box" *ngFor="let item of products">
+        <div class="box-left" >
+            <!-- <img src="assets/images/mobile_user_img/camera.jpg" alt=""> -->
+            <img [src]="item.images[0].url" alt="">
+        </div>
+        <div class="box-center">
+            <div class="box-center-top"><H2>{{item.title}}</H2></div>
+            <div class="box-center-middle">{{item.description}}</div>
+            <div class="box-center-bottom">Rs. {{item.price}}</div>
+            <div class="box-center-brand">{{item.brand}}</div>
+        </div>
+        <div class="box-right">
+            <div class="box-right-cart">
+                <button>AddToCart </button>
+            </div>
+            <div class="box-right-buy">
+                <button>Buy Now </button>
+            </div>
+        </div>
+    </div>
+</div>
+

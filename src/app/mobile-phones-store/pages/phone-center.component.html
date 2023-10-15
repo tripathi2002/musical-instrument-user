@@ -7,7 +7,6 @@
     </div>
 </div>
 <div class="center-middle" *ngFor="let box of centerMiddle">
-
     <div class="center-middle-box">
         <div class="center-middle-box-head">{{box.title}}</div>
         <div class="center-middle-box-main" *ngIf="box['items'].length>0">
@@ -16,12 +15,9 @@
                 [ngTemplateOutletContext]="{items:box.items}"
             >
             </ng-container>
-            
         </div>
     </div>
 </div>
-
-
 
 <ng-template #first let-items="items">
     <div class="center-middle-box-main-item" *ngFor="let item of items">

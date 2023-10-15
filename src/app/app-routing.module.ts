@@ -6,7 +6,7 @@ import { CartComponent } from './cart/cart.component';
 const routes: Routes = [
   {
     path:'',
-    redirectTo:'mobile-phones-store',
+    redirectTo:'mobile-store',
     pathMatch:'full'
   },
   // { 
@@ -14,7 +14,7 @@ const routes: Routes = [
   //   loadChildren: ()=> import('./user/user.module').then(m=> m.UserModule)
   // },
   {
-    path: 'mobile-phones-store',
+    path: 'mobile-store',
     loadChildren: ()=> import('./mobile-phones-store/mobile-phones-store.module').then(m=>m.MobilePhonesStoreModule)
   },
   { path: 'cart', component:CartComponent},

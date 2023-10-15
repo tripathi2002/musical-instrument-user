@@ -11,7 +11,7 @@ export const centerMiddle = [
          {
             title:'Android Phones around Rs 10,000',
             img:'assets/images/mobile_user_img/android-phone.png',
-            routerlink:'phonefinder'
+            routerlink:'phones'
          },
          {
             title:'Android Phones around Rs 10,000',
@@ -98,7 +98,7 @@ export const leftData = [
       heading:'Operating System',
       items: [
          {
-            routerLink:'',
+            routerLink:'androids',
             label:'Android Mobiles',
          },
          {

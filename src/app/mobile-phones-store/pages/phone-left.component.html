@@ -12,8 +12,10 @@
 
 <ng-template #filters let-items="items">
     <div class="left-box-item" *ngFor="let item of items">
-        <div class="left-box-item value">
-            {{item.label}}
-        </div> 
-    </div>
+        <a [routerLink]="item.routerLink">
+            <div class="left-box-item-value">
+                {{item.label}}
+            </div> 
+        </a>
+        </div>
 </ng-template>
