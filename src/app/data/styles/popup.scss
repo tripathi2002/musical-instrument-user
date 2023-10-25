@@ -1,0 +1,62 @@
+.container{
+    background: #fff;
+    border-radius: 0.625rem;
+    box-shadow: .06rem 0 1.25rem 0 #8690a3;
+    padding: .831rem 1.563rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    // max-width: 90vh;
+
+    .container-title {
+        margin: .5rem 0;
+        padding: .5rem 1rem;
+        font-weight: 700;
+    }
+
+    .btn {
+        cursor: pointer;
+        margin: 0.5rem 0.5rem;
+        padding: .5rem 1rem;
+        border: 1px solid transparent;
+        border-radius: 5%;
+        outline: 0;
+        font-weight: 700;
+        font-size: large;
+    }
+
+    .btn:hover,
+    .btn:focus {
+        color: #699dfa;
+    }
+
+    .message {
+        position: fixed;
+        top:10rem;
+        color: #fff;
+        padding: 0.5rem 1rem;
+        width: 16rem;
+        text-align: center;
+        height: 5rem;
+        border-right: none;
+        overflow: hidden;
+        border-radius: 0.5rem 0 0 0.5rem;
+    }
+}
+
+.loading-box {
+    opacity: 1;
+    position: fixed;
+    top: 10rem;
+    left: calc(50% - 11.625rem);
+}
+
+// scrolling and visibility on hover and focus 
+.scrollwrap{
+    overflow-y: auto;
+}
+//works on chrome, eage and safari 
+.scrollwrap::-webkit-scrollbar {
+    width: 0;
+}

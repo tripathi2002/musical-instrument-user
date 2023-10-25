@@ -1,0 +1,36 @@
+<div class="container scrollwrap">
+
+    <div class="container-title">
+        <div class="container-title-left"> {{title}} </div>
+        <div class="container-title-right" (click)="onClose()"><i class="fa-solid fa-circle-xmark fa-xl"></i></div>
+    </div>
+
+    <div class="box">
+        <div class="box-left" >
+            <!-- <img src="assets/images/mobile_user_img/camera.jpg" alt=""> -->
+            <ng-container *ngIf="item.images.length>0">
+                <img [src]="item.images[0].url" alt="">
+            </ng-container>
+        </div>
+        <div class="box-center">
+            <div class="box-center-top"><H2>{{item.title}}</H2></div>
+            <div class="box-center-middle">{{item.description}}</div>
+            <div class="box-center-bottom">Rs.{{item.price}}</div>
+        </div>
+        <div class="box-right">
+            <div class="box-right-cart">
+                price: {{item.price}}
+            </div>
+            <div class="box-right-buy">
+                <button (click)="onSubmit()"> ConfirmToAdd</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="message" [@error]="isError?'start':'end'" [@success]="isSuccess?'start':'end'">
+        <span>{{message}}</span>
+    </div>
+</div>
+<div class="loading-box" *ngIf="isLoading">
+    <img src="assets/images/loading.gif" alt="loading image" class="loading-box-img">
+</div>

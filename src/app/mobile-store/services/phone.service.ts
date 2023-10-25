@@ -7,22 +7,24 @@ import { BASE_URL } from 'src/app/user/data/constants.injectables';
 export class PhoneService {
 
   constructor(
-    @Inject(BASE_URL) private BASE_URL: string,
+    @Inject(BASE_URL) private baseUrl: string,
     private http:HttpClient
   ) { 
 
   }
   all(){
-    return this.http.get(`${this.BASE_URL}/product`)
+    return this.http.get(`${this.baseUrl}/product`)
       .pipe(
         map(res=>res)
       )
   }
 
   getProduct(id:any){
-    return this.http.get(`${this.BASE_URL}/product/${id}`)
+    return this.http.get(`${this.baseUrl}/product/${id}`)
       .pipe(
         map(res=>res)
       )
   }
+
+
 }

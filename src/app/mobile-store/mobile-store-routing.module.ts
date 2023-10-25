@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MobilePhonesStoreComponent } from './mobile-phones-store.component';
-import { PhoneComponent } from './phone/phone.component';
+import { MobileStoreComponent } from './mobile-store.component';
+import { PhoneProductsComponent } from './components/phone-products.component';
 
 const routes: Routes = [
   {
     path:'',
-    component:MobilePhonesStoreComponent
+    component:MobileStoreComponent
   },
   {
     path:'phones',
-    component: PhoneComponent
+    component: PhoneProductsComponent
   }
 ];
 
@@ -18,4 +18,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class MobilePhonesStoreRoutingModule { }
+export class MobileStoreRoutingModule { }

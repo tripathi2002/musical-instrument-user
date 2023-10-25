@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="box" *ngFor="let item of lists">
+        <div class="box-left" >
+            <ng-container *ngIf="item.images.length>0">
+                <img [src]="item.images[0].url" alt="">
+            </ng-container>
+        </div>
+        <div class="box-center">
+            <div class="box-center-top"><H2>{{item.title}}</H2></div>
+            <div class="box-center-middle">{{item.brand.title}}</div>
+            <div class="box-center-middle"></div>
+            <div class="box-center-bottom">Rs.{{item.price}}</div>
+        </div>
+        <div class="box-right">
+            <div class="box-right-cart">
+                <button (click)="addToCart(item._id)">AddToCart </button>
+            </div>
+            <div class="box-right-view">
+                <button (click)="viewDetails(item._id)">ViewMoreDetails</button>
+            </div>
+            <!-- <div class="box-right-buy">
+                <button (click)="openBuy(item)">Buy Now </button>
+            </div> -->
+        </div>
+    </div>
+</div>
+

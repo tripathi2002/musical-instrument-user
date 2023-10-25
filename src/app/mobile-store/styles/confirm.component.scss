@@ -1,0 +1,39 @@
+.container{
+    min-width: 34vw;
+    .container-title {
+        display: flex;
+        margin: 0.2rem 0.625rem;
+        padding: 0.1rem 0.625rem;
+        font-size: larger;
+        font-weight: 700;
+        width: 100%;
+        justify-content: space-between;
+
+        .container-title-left {
+            letter-spacing: .2rem;
+        }
+
+        .container-title-right {}
+    }
+
+    .box{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        width: 100%;
+
+        .box-message{
+            margin: 2rem 0rem;
+            font-size: larger;
+            font-weight: 600;
+            letter-spacing: .05rem;
+        }
+
+        .box-option{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+        }
+
+    }
+}

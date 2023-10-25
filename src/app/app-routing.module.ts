@@ -9,13 +9,13 @@ const routes: Routes = [
     redirectTo:'mobile-store',
     pathMatch:'full'
   },
-  // { 
-  //   path: 'user',
-  //   loadChildren: ()=> import('./user/user.module').then(m=> m.UserModule)
-  // },
+  { 
+    path: 'user',
+    loadChildren: ()=> import('./user/user.module').then(m=> m.UserModule)
+  },
   {
     path: 'mobile-store',
-    loadChildren: ()=> import('./mobile-phones-store/mobile-phones-store.module').then(m=>m.MobilePhonesStoreModule)
+    loadChildren: ()=> import('./mobile-store/mobile-store.module').then(m=>m.MobilePhonesStoreModule)
   },
   { path: 'cart', component:CartComponent},
 ];

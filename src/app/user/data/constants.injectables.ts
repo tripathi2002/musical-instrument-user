@@ -1,4 +1,4 @@
-export let BASE_URL = 'http://192.168.1.21:1000/v3/api';
+export let BASE_URL = 'http://127.0.0.1:1000/v3/api';
 
 export const Injector: Array<any> = [
     {
