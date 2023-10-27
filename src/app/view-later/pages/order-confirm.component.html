@@ -1,0 +1,30 @@
+<div class="head">
+    <div class="title">
+        Click yes to Confirm
+    </div>
+
+    <div class="choice-box">
+        <div class="choice-btn-left">
+            <button (click)="onSubmit()">Yes</button>
+        </div>
+        <div class="choice-btn-right">
+            <button (click)="dialogRef.close()">No</button>
+        </div>
+    </div>
+</div>
+
+<div class="action-container">
+
+    <div class="message" 
+        [@error]="isError?'start':'end'" 
+        [@success]="isSuccess?'start':'end'"  
+    >
+        <span>{{message}}</span>
+    </div>
+    <div class="action-blur"  *ngIf="isLoading"  [@loading]="isLoading?'start':'end'"></div>
+        <div class="loading-box"
+          *ngIf="isLoading"
+        >
+          <img class="lodaing-box-img" src="../../../assets/images/loading.gif" alt="loading image">
+        </div>
+  </div>

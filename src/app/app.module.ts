@@ -12,7 +12,9 @@ import { HeaderMiddleComponent } from './header/header-middle/header-middle.comp
 
 import { OverlayModule } from '@angular/cdk/overlay';
 import { CdkMenuModule } from '@angular/cdk/menu';
-import { CartComponent } from './cart/cart.component';
+import { DialogModule } from '@angular/cdk/dialog';
+import { SharedService } from './data/services/shared.service';
+import { ActionComponent } from './data/action.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,7 @@ import { CartComponent } from './cart/cart.component';
     HeaderTopComponent,
     HeaderBottomComponent,
     HeaderMiddleComponent,
-    CartComponent,
+    ActionComponent,
 
   ],
   imports: [
@@ -31,8 +33,10 @@ import { CartComponent } from './cart/cart.component';
     OverlayModule,
     CdkMenuModule,
     BrowserAnimationsModule,
+    DialogModule,
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

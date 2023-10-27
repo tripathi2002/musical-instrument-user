@@ -2,7 +2,7 @@ import { DIALOG_DATA, DialogRef } from '@angular/cdk/dialog';
 import { Component, Inject, OnInit } from '@angular/core';
 import { error, loading, success } from 'src/app/data/data';
 import { PhoneService } from '../services/phone.service';
-import { popupBase } from 'src/app/data/class';
+import { actions } from 'src/app/data/class';
 
 @Component({
   selector: 'app-phone-buy',
@@ -10,7 +10,7 @@ import { popupBase } from 'src/app/data/class';
   styleUrls: ['../styles/phone-products.component.scss', '../../data/styles/popup.scss', '../styles/phone-buy.component.scss'],
   animations: [error, success, loading],
 })
-export class PhoneBuyComponent extends popupBase implements OnInit {
+export class PhoneBuyComponent extends actions implements OnInit {
   item: any;
   sendData: any;
   constructor(
@@ -18,7 +18,7 @@ export class PhoneBuyComponent extends popupBase implements OnInit {
     @Inject(DIALOG_DATA) public data: any,
 
   ){
-    super();
+    super("Buy");
     this.item = data.item
   }
 

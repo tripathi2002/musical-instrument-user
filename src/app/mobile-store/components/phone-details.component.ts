@@ -1,61 +1,89 @@
 import { DIALOG_DATA, DialogRef } from '@angular/cdk/dialog';
 import { Component, Inject, OnInit } from '@angular/core';
 import { PhoneService } from '../services/phone.service';
+import { Product } from '../interfaces/product';
+import { timeInterval } from 'rxjs';
+import { error, loading, success } from 'src/app/data/data';
+import { actions } from 'src/app/data/class';
+import { SharedService } from 'src/app/data/services/shared.service';
 
 @Component({
   selector: 'app-phone-details',
   templateUrl: '../pages/phone-details.component.html',
-  styleUrls: ['../styles/phone-products.component.scss','../styles/phone-details.component.scss',]
+  // styleUrls: ['../styles/phone-products.component.scss','../styles/phone-details.component.scss],
+  styleUrls: ['../styles/phone-products.component.scss',
+    '../styles/phone-details.component.scss',
+    '../../data/styles/dialogBox.scss',
+    '../../data/styles/action.scss'],
+  animations: [error, success, loading]
+
 })
-export class PhoneDetailsComponent implements OnInit {
-  title = "Product Details"
+export class PhoneDetailsComponent extends actions implements OnInit {
+  product: Product | any;
+  count: number = 1;
 
-  item: any= {
-    _id: '650563b773ef3233df8080e9', title: 'Motorola Edge 40 Neo', slug: 'f3', 
-    description: '... Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, consectetur animi!', 
-    price: 2, images: [
-
-      { url: 'https://res.cloudinary.com/dg7hngysn/image/upload/v1694957845/rdt0egafni0tqtyzs02h.jpg' },
-      { url: 'https://res.cloudinary.com/dg7hngysn/image/upload/v1694957845/rdt0egafni0tqtyzs02h.jpg' },
-      { url: 'https://res.cloudinary.com/dg7hngysn/image/upload/v1694957845/rdt0egafni0tqtyzs02h.jpg' },
-    ],
-    brand: {_id: '65056097b15c6e35c516d18d', title: 'samsung', createdAt: '2023-09-16T08:00:23.876Z', updatedAt: '2023-09-16T08:00:23.876Z', __v: 0}
-  }
   constructor(
     public dialogRef: DialogRef,
     @Inject(DIALOG_DATA) public data: any,
-    public ps: PhoneService
-  ){
-    // super();
+    public ps: PhoneService,
+    public sharedService: SharedService
+  ) {
+    super("Product Details");
   }
-
-  getProduct(){
-    this.ps.getProduct(this.data.id)
-      .subscribe((res)=>{
-        this.item = res['product'];
-        console.log("product::", res)
-      }, (err)=>{
-        console.log(err);
-      })
-
-  }
-  
-  onClose(){
+  onClose() {
     this.dialogRef.close();
   }
 
 
 
-  // addToCart(id:any){
-  //   // console.log(id);
-  //   const dialogRef=this.dialog.open(ConfirmComponent, {
-  //     data: {id}
-  //   })
-  // }
+  addToCart() {
+    let data = {
+      cart: [
+        {
+          _id: this.data.id,
+          count: this.count,
+          color: this.product.color
+        }
+      ]
+    }
 
+    this.trueLoading();
+    this.ps.addToCart(data)
+      .subscribe((res) => {
+        this.trueSuccess("Created User");
+        this.message = 'Congratulation!!';
+
+        // alert("Add the product in cart");
+        setTimeout(() => {
+          this.onClose();
+        }, 3000);
+      }, (err) => {
+        this.trueError(err.error.message);
+        this.timelate();
+
+        console.log(err);
+      }, () => {
+        this.count = 1;
+      });
+  }
+
+  getProduct() {
+    this.ps.getProduct(this.data.id)
+      .subscribe((res) => {
+        console.log(res);
+        this.product = res['product'];
+      }, (err) => {
+        console.log(err);
+      })
+  }
+
+  getProductCopy() {
+    this.product = this.ps.getProductCopy(this.data.id);
+  }
 
   ngOnInit(): void {
     this.getProduct();
+    this.getProductCopy();
   }
 
 }

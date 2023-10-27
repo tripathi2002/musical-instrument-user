@@ -60,37 +60,37 @@ export const centerMiddle = [
       ]
 
    },
-   {
-      title:"Mobiles By Popular Brands",
-      items:[
-         {
-            img:'assets/images/mobile_user_img/1491486217_MI.png',
-            routerlink:'phonefinder'
-         }
-      ]
+   // {
+   //    title:"Mobiles By Popular Brands",
+   //    items:[
+   //       {
+   //          img:'assets/images/mobile_user_img/1491486217_MI.png',
+   //          routerlink:'phonefinder'
+   //       }
+   //    ]
 
-   },
-   {
-      title:"Best Phones By Price",
-      items:[
+   // },
+   // {
+   //    title:"Best Phones By Price",
+   //    items:[
          
-      ]
+   //    ]
 
-   },
-   {
-      title:"Most Popular Mobiles",
-      items:[
+   // },
+   // {
+   //    title:"Most Popular Mobiles",
+   //    items:[
          
-      ]
+   //    ]
 
-   },
-   {
-      title:"Upcoming & Recent Mobiles",
-      items:[
+   // },
+   // {
+   //    title:"Upcoming & Recent Mobiles",
+   //    items:[
          
-      ]
+   //    ]
 
-   },
+   // },
 ]
 
 export const leftData = [

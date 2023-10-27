@@ -35,13 +35,16 @@
     </div>
 
     <!-- <div class="error" [ngClass]="isError?'pluse':''"> -->
-    <div class="error" [ngClass]="{'inError': isError, 'outError':!isError}">
-        <span *ngIf="isError">{{message}}</span>
+        <div class="message" 
+        [@error]="isError?'start':'end'" 
+        [@success]="isSuccess?'start':'end'"  
+    >
+        <span>{{message}}</span>
     </div>
-    <div class="loading" [ngClass]="{'in':isLoading, 'out':!isLoading}" *ngIf="isLoading">
-        <div class="loading-box">
-            <img class="lodaing-box-img" src="../../../assets/images/loading.gif" alt="loading image">
-        </div>
+    <div class="loading-box"
+    *ngIf="isLoading"
+    >
+    <img class="lodaing-box-img" src="../../../assets/images/loading.gif" alt="loading image">
     </div>
 </div>
 

@@ -1,28 +1,14 @@
-<div class="container scrollwrap">
-
-    <div class="container-title">
-        <div class="container-title-left"> {{title}} </div>
-        <div class="container-title-right" (click)="onClose()"><i class="fa-solid fa-circle-xmark fa-xl"></i></div>
+<div class="head">
+    <div class="title">
+        Yes to Confirm:: :
     </div>
-    <div class="box">
-        <div class="box-message">
-            Are you sure to add the product in cart! 
-        </div>
-        <div class="box-option">
 
-            <div class="box-option-confirm">
-                <button class="btn" (click)="onSubmit()">Confirm</button>
-            </div>
-            <div class="box-option-cancle">
-                <button class="btn" (click)="onClose()">Cancle</button>
-            </div>
+    <div class="choice-box">
+        <div class="choice-btn-left">
+            <button (click)="onSubmit()">Yes</button>
+        </div>
+        <div class="choice-btn-right">
+            <button (click)="dialogRef.close()">No</button>
         </div>
     </div>
-
-    <div class="message" [@error]="isError?'start':'end'" [@success]="isSuccess?'start':'end'">
-        <span>{{message}}</span>
-    </div>
-</div>
-<div class="loading-box" *ngIf="isLoading">
-    <img src="assets/images/loading.gif" alt="loading image" class="loading-box-img">
 </div>

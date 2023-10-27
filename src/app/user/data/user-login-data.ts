@@ -1,4 +1,4 @@
-export const UserLogin = [
+export const UserLoginFormate = [
     {
         placeholder:"Email ID",
         type:'email',

@@ -1,4 +1,4 @@
-export const UserCreate = [
+export const UserCreateFormate = [
     {
         placeholder:"First Name",
         type:'text',

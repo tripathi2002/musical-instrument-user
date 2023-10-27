@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="top">
+        <div class="title">
+            {{title}}
+        </div>
+    </div>
+    <div class="middle">
+        <div class="middle-products">
+            <!-- <div class="middle-proucts-box" *ngFor="let product of cartDetails.products">
+                {{product.product.title}} -->
+                <div class="box" *ngFor="let item of cartDetails.products">
+                    <div class="box-left" >
+                        <ng-container *ngIf="item.product.images.length>0">
+                            <img [src]="item.product.images[0].url" alt="">
+                        </ng-container>
+                    </div>
+                    <div class="box-center" >
+                        <div class="box-center-item"><H2>{{item.product.title}}</H2></div>
+                        <!-- <div class="box-center-item">Brand: {{item.product.brand.title}}</div> -->
+                        <!-- <div class="box-center-item">Category: {{item.product.category.title}}</div> -->
+                        <div class="box-center-item">Color( {{item.color}} ):<b>  X  </b> {{item.count}}Qty. </div>
+                        <div class="box-center-item">Price: Rs.{{item.price}}</div>
+                        <!-- <div class="box-center-item">Total Selected : </div> -->
+                        
+                    </div>
+                    <div class="box-right">
+                        <!-- <div class="box-right-cart">
+                            <button (click)="onRemove(item.product._id)">Remove </button>
+                        </div> -->
+                        <!-- <div class="box-right-view">
+                            <button (click)="viewDetails(item.product._id)">ViewMoreDetails</button>
+                        </div> -->
+                        <!-- <div class="box-right-buy">
+                            <button (click)="openBuy(item)">Buy Now </button>
+                        </div> -->
+                    </div>
+                </div>
+            <!-- </div> -->
+
+        </div>
+    </div>
+
+    <div class="bottom">
+        <div class="bottom-buy">
+            <button (click)="onEmpty()">Clear the Cart</button>
+        </div>
+        <div class="bottom-buy">
+            <button (click)="onBuy()">Confirm Order</button>
+        </div>
+        <div class="bottom-total">
+            Total Price: ₹{{cartDetails.cartTotal}}
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="box">
+
+        <div class="box" *ngFor="let item of orders.products">
+            <div class="product">
+                <div class="box-item">Product Id: {{item._id}}</div>
+                <div class="box-item">Color( {{item.color}} ):<b> X </b> {{item.count}}Qty. </div>
+            </div>
+        </div>
+        <!-- <div class="box"> -->
+            <div class="box">Order Method: {{orders.paymentIntent.method}}</div>
+            <div class="box">Order amount: {{orders.paymentIntent.amount}}</div>
+            <div class="box">Order currency: {{orders.paymentIntent.currency}}</div>
+            <div class="box">Order Method: {{orders.paymentIntent.method}}</div>
+        <!-- </div> -->
+        <div class="box">
+            <div class="top">Order Status:{{orders.orderStatus}}</div>
+        </div>
+    </div>
+</div>

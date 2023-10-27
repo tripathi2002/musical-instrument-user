@@ -1,14 +1,19 @@
-import { TrueFalse } from "./interface";
+import { TrueFalse } from "./interfaces/trueFalse.interface";
 
-export class popupBase implements TrueFalse {
+export class actions implements TrueFalse {
     title="Page"
     message = '';
     isError=false;
     isLoading=false;
     isSuccess=false;
+    toggle=undefined;
 
-    constructor(){
-
+    constructor(   title?: string, toggel?: boolean){
+        this.title = title;
+        this.toggle=toggel;
+        this.isError = false;
+        this.isSuccess = false;
+        this.message = '';
     }
 
     falseAll(): void {

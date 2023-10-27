@@ -5,20 +5,48 @@
     </div>
     <div class="box">
         <div class="box-left" >
-            <ng-container *ngIf="item.images.length>0">
-                <div class="box-left-image" *ngFor="let image of item.images">
+            <ng-container *ngIf="product.images.length>0">
+                <div class="box-left-image" *ngFor="let image of product.images">
                     <img [src]="image.url" alt="">
                 </div>
             </ng-container>
         </div>
         <div class="box-center">
-            <div class="box-center-top"><H2>{{item.title}}</H2></div>
+            <div class="box-center-top"><H2>{{product.title}}</H2></div>
             <div class="box-center-middle">
-                <div class="box-center-middle-item">{{item.brand.title}}</div>
-                <div class="box-center-middle-item">{{item.description}}</div>
-
+                <div class="box-center-middle-item">Brand: {{product.brand.title}}</div>
+                <div class="box-center-middle-item">Category:{{product.category.title}}</div>
             </div>
-            <div class="box-center-bottom">Rs.{{item.price}}</div>
+            <div class="box-center-bottom">Color:{{product.color}}</div>
+            <div class="box-center-bottom">Total Ratings{{product.totalRatings}}</div>
+            <div class="box-center-bottom">Rs.{{product.price}}</div>
+            <div class="box-center-middle-item">{{product.description}}</div>
+        </div>
+        <div class="action">
+            <div class="action-quantity">
+                Quantity: <button (click)="count=count-1">  -  </button> {{count}} <button (click)="count=count+1">  +  </button>
+            </div>
+            <div class="action-btn">
+                <button (click)="addToCart()">ADD TO CART</button>
+            </div>
         </div>
     </div>
 </div>
+
+
+<!-- // action viewer template-->
+<div class="action-container">
+
+    <div class="message" 
+        [@error]="isError?'start':'end'" 
+        [@success]="isSuccess?'start':'end'"  
+    >
+        <span>{{message}}</span>
+    </div>
+    <div class="action-blur"  *ngIf="isLoading"  [@loading]="isLoading?'start':'end'"></div>
+        <div class="loading-box"
+          *ngIf="isLoading"
+        >
+          <img class="lodaing-box-img" src="../../../assets/images/loading.gif" alt="loading image">
+        </div>
+  </div>

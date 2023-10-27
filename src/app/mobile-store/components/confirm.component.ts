@@ -1,16 +1,16 @@
 import { DIALOG_DATA, DialogRef } from '@angular/cdk/dialog';
 import { Component, Inject, OnInit } from '@angular/core';
-import { popupBase } from 'src/app/data/class';
+import { actions } from 'src/app/data/class';
 import { error, loading, success } from 'src/app/data/data';
 import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-confirm',
   templateUrl: '../pages/confirm.component.html',
-  styleUrls: ['../../data/styles/popup.scss','../styles/confirm.component.scss',],
+  styleUrls: ['../styles/confirm.component.scss','../../data/styles/dialogBox.scss',],
   animations: [error, success, loading]
 })
-export class ConfirmComponent extends popupBase implements OnInit {
+export class ConfirmComponent extends actions implements OnInit {
   cart = [];
   count = 1;
 
@@ -19,7 +19,7 @@ export class ConfirmComponent extends popupBase implements OnInit {
     @Inject(DIALOG_DATA) public data: any,
     public cs: CartService
   ){
-    super();
+    super("Confirm");
   }
 
   onSubmit(){

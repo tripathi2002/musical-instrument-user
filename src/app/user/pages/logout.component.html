@@ -1,0 +1,22 @@
+<div class="head">
+    <div class="title">
+        Are you sure to log out :
+    </div>
+
+    <div class="choice-box">
+        <div class="choice-btn-left">
+            <button (click)="sessionEnd()">Yes</button>
+        </div>
+        <div class="choice-btn-right">
+            <button (click)="dialogRef.close()">No</button>
+        </div>
+    </div>
+</div>
+
+
+<div class="message" [@error]="isError?'start':'end'" [@success]="isSuccess?'start':'end'">
+    <span>{{message}}</span>
+</div>
+<div class="loading-box" *ngIf="isLoading">
+    <img class="lodaing-box-img" src="../../../assets/images/loading.gif" alt="loading image">
+</div>

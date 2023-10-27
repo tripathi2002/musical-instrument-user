@@ -1,6 +1,9 @@
 import { Component, HostListener } from '@angular/core';
 import { languages, userItems } from '../header-data/header-data';
 import { Router } from '@angular/router';
+import { LogoutComponent } from 'src/app/user/components/logout.component';
+import { Dialog } from '@angular/cdk/dialog';
+import { SharedService } from 'src/app/data/services/shared.service';
 
 @Component({
   selector: 'app-header-middle',
@@ -9,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class HeaderMiddleComponent {
   
-  userItems = userItems;
+  userItems:any;
   canShowSearchAsOverlay = false;
   selectedLanguage: any;
 
@@ -20,11 +23,18 @@ export class HeaderMiddleComponent {
       this.checkCanShowSearchAsOverlay(window.innerWidth);
     }
 
-    constructor(public router: Router){}
+    constructor(public router: Router,
+      public dialog: Dialog,
+      private sharedService: SharedService
+      ){}
 
     ngOnInit(): void {
       this.checkCanShowSearchAsOverlay(window.innerWidth);
       this.selectedLanguage = this.languages[0];
+
+      this.sharedService.headerData$.subscribe((data)=>{
+        this.userItems = data;
+      })
     }
 
     checkCanShowSearchAsOverlay(innerWidth: number): void {
@@ -34,4 +44,10 @@ export class HeaderMiddleComponent {
         this.canShowSearchAsOverlay=false;
       }
     }
+
+    
+  openDialog() {
+    this.dialog.open(LogoutComponent);
+  }
+
 }

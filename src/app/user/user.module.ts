@@ -6,29 +6,31 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { UserRoutingModule } from './user-routing.module';
 
-import { UserComponent } from './user.component';
-import { UserCreateComponent } from './user-create/user-create.component';
-import { UserLoginComponent } from './user-create/user-login.component';
-import { UserDetailComponent } from './user-detail/user-detail.component';
+import { UserCreateComponent } from './components/user-create.component';
+import { UserLoginComponent } from './components/user-login.component';
+import { UserDetailComponent } from './components/user-detail.component';
 
-import { UserService } from './user.service';
+import { UserService } from './services/user.service';
 import { Injector } from './data/constants.injectables';
-import { LogOutComponent } from './user-create/log-out.component';
+import { LogoutComponent } from './components/logout.component';
+import { DialogModule } from '@angular/cdk/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
   declarations: [
-    UserComponent,
     UserCreateComponent,
     UserLoginComponent,
     UserDetailComponent,
-    LogOutComponent
+    LogoutComponent
   ],
   imports: [
     CommonModule,
     UserRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    DialogModule,
+    // BrowserAnimationsModule
   ],
   providers: [
     UserService,

@@ -247,7 +247,7 @@ Response::
   ]
 }
 -----
-Get All Products ::GET:http://127.0.0.1:1000/v3/api/product/:id
+Get a Products ::GET:http://127.0.0.1:1000/v3/api/product/:id
 url:http://127.0.0.1:1000/v3/api/product/65391e01178feffa15c69818 
 Response::
 {
@@ -299,8 +299,11 @@ Response::
   }
 }
 
-Add product to wishlist:: PUT: http://127.0.0.1:1000/v3/api/product/wishlist 
+Add or remove product to wishlist:: PUT: http://127.0.0.1:1000/v3/api/product/wishlist 
 headers: "token :'Bearrer '"
+body {
+  "prodId":"65391e01178feffa15c69818"
+}
 Response::
 {
   "_id": "653915eae4cbe15043028d4a",
@@ -313,9 +316,11 @@ Response::
   "isBlocked": false,
   "cart": [],
   "address": [],
-  "wishlist": [],
+  "wishlist": [
+    "65391e01178feffa15c69818"
+  ],
   "createdAt": "2023-10-25T13:19:38.173Z",
-  "updatedAt": "2023-10-25T14:22:38.031Z",
+  "updatedAt": "2023-10-25T17:34:09.393Z",
   "__v": 0,
   "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzkxNWVhZTRjYmUxNTA0MzAyOGQ0YSIsImlhdCI6MTY5ODI0MDk1MCwiZXhwIjoxNjk4ODQ1NzUwfQ.E23uYQ13Fh2aCMNJbhiPGKuALsUgWwESNIiaUgnL1CI"
 }
@@ -382,7 +387,7 @@ body: {
             "color": "Black"
         }, 
         {
-            "_id": "product-id",
+            "_id": "product-id2",
             "count": 2,
             "color": "green"
         }
@@ -408,7 +413,7 @@ Response::
 }
 -----
 Get the cart::GET:http://127.0.0.1:1000/v3/api/cart 
-headers: "token :'Bearrer '" 
+headers: "token :'Bearer '" 
 Response::
 {
   "_id": "65392ab64f6dd89aad379cf6",

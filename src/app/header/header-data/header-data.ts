@@ -1,6 +1,6 @@
 export const languages = [
     {
-        languages: 'English(India)',
+        languages: 'English(Bharat)',
         flag: 'bharat',
     },
     {
@@ -37,6 +37,11 @@ export const userItems = [
         routeLink:'user/setting',
         icon: 'fa-solid fa-gears',
         label: 'settings'
+    },
+    {
+        routeLink:'view-later/orders',
+        icon: 'fa-solid fa-truck-fast',
+        label: 'Orders'
     },
     {
         routeLink: localStorage.getItem('token')?'user/logout':'user/login',

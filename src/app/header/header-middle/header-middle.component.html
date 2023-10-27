@@ -50,7 +50,7 @@
                 </div>
                 <div class="head-menu-item">
                     <button class="head-menu-item-btn ripple" 
-                        [routerLink]="'cart'"
+                        [routerLink]="'view-later/cart'"
                         routerLinkActive="active"
                     >
                         <i class="fa fa-cart-plus menu-icon"></i>
@@ -93,9 +93,15 @@
 <ng-template #userOverlay>
     <div class="overlay overlay-user overlay-fall" cdkMenu>
         <ul>
-            <li *ngFor="let item of userItems" > 
-                <a [routerLink]="item.routeLink" cdkMenuItem>
-                    <i  class="icon" [ngClass]="item.icon"></i>
+            <li *ngFor="let item of userItems">
+
+                <a [routerLink]="item.routeLink" *ngIf="item.type=='a'" cdkMenuItem>
+                    <i class="icon" [ngClass]="item.icon"></i>
+                    <span>{{item.label}}</span>
+                </a>
+
+                <a cdkMenuItem *ngIf="item.type=='b'" (click)="openDialog()">
+                    <i class="icon" [ngClass]="item.icon"></i>
                     <span>{{item.label}}</span>
                 </a>
             </li>

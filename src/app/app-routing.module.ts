@@ -1,23 +1,27 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CartComponent } from './cart/cart.component';
+import { ActionComponent } from './data/action.component';
 
 
 const routes: Routes = [
   {
-    path:'',
-    redirectTo:'mobile-store',
-    pathMatch:'full'
+    path: '',
+    redirectTo: 'mobile-store',
+    pathMatch: 'full'
   },
-  { 
+  {
     path: 'user',
-    loadChildren: ()=> import('./user/user.module').then(m=> m.UserModule)
+    loadChildren: () => import('./user/user.module').then(m => m.UserModule)
   },
   {
     path: 'mobile-store',
-    loadChildren: ()=> import('./mobile-store/mobile-store.module').then(m=>m.MobilePhonesStoreModule)
+    loadChildren: () => import('./mobile-store/mobile-store.module').then(m => m.MobilePhonesStoreModule)
   },
-  { path: 'cart', component:CartComponent},
+  {
+    path: 'view-later',
+    loadChildren: ()=>import('./view-later/view-later.module').then(m=>m.ViewLaterModule)
+  },
+  { path: 'cart', component: ActionComponent },
 ];
 
 @NgModule({
