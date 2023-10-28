@@ -12,7 +12,8 @@ import { OrderConfirmComponent } from './order-confirm.component';
 })
 export class CartComponent implements OnInit {
   cartDetails:any;
-  // products;
+  cartProducts;
+  cartTotal = 0;
   // product;
   // cart:any;
   title = "Cart Page"
@@ -27,7 +28,8 @@ export class CartComponent implements OnInit {
   onEmpty(){
     this.cs.emptyCart()
       .subscribe((res)=>{
-        this.cartDetails = []
+        // this.cartDetails = [];
+        this.cartProducts = [];
       },(err)=>{
         console.log(err);
       });
@@ -43,6 +45,16 @@ export class CartComponent implements OnInit {
     this.cs.getCart()
       .subscribe((res)=>{
         this.cartDetails = res;
+        console.log("cart res",res);
+      })
+  }
+
+  getAllCart(){
+    this.cs.getAllCart()
+      .subscribe((res)=>{
+        this.cartProducts = res;
+        console.log(res);
+        this.calculateCartTotal();
       })
   }
 
@@ -51,8 +63,17 @@ export class CartComponent implements OnInit {
     console.log(this.cartDetails)
   }
   
+  calculateCartTotal(){
+    this.cartProducts.forEach(element => {
+      this.cartTotal += element.cartTotal; 
+    });
+    if(this.cartTotal>500){
+      this.cartTotal +=200
+    }
+  }
   ngOnInit(): void {
-    this.getCartCopy();
-    this.getCart();
+    // this.getCartCopy();
+    // this.getCart();
+    this.getAllCart();
   }
 }

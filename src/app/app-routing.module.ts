@@ -14,6 +14,10 @@ const routes: Routes = [
     loadChildren: () => import('./user/user.module').then(m => m.UserModule)
   },
   {
+    path: 'orders',
+    loadChildren: ()=>import('./orders/order.module').then(m=>m.OrderModule)
+  },
+  {
     path: 'mobile-store',
     loadChildren: () => import('./mobile-store/mobile-store.module').then(m => m.MobilePhonesStoreModule)
   },
@@ -21,7 +25,8 @@ const routes: Routes = [
     path: 'view-later',
     loadChildren: ()=>import('./view-later/view-later.module').then(m=>m.ViewLaterModule)
   },
-  { path: 'cart', component: ActionComponent },
+  
+  // { path: 'cart', component: ActionComponent },
 ];
 
 @NgModule({

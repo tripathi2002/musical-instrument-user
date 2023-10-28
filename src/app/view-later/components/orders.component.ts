@@ -15,7 +15,7 @@ export class OrdersComponent implements OnInit {
   ){}
 
   getOreders(){
-    this.orders = this.cs.getOrders()
+    this.cs.getOrders()
       .subscribe((res)=>{
         this.orders = res;
         console.log(res);

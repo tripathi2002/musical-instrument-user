@@ -30,16 +30,25 @@ export class OrderConfirmComponent extends actions {
       .subscribe((res) => {
         console.log(res);
         this.trueSuccess('Order Confirmed');
+        this.cs.emptyCart()
+          .subscribe((res) => {
+            // this.cartDetails = [];
+            // this.cartProducts = [];
+            
+          }, (err) => {
+            console.log(err);
+          });
+
       }, (err) => {
         console.log(err);
         this.trueError(err.error.message);
         this.timelate();
-        setTimeout(()=>{
+        setTimeout(() => {
           this.dialogRef.close();
         }, 5000)
 
-      },()=>{
-        setTimeout(()=>{
+      }, () => {
+        setTimeout(() => {
           this.dialogRef.close();
         }, 5000)
       })

@@ -83,7 +83,7 @@ export class PhoneDetailsComponent extends actions implements OnInit {
 
   ngOnInit(): void {
     this.getProduct();
-    this.getProductCopy();
+    // this.getProductCopy();
   }
 
 }

@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="container-title">
+        <div class="container-title-left"> {{title}} </div>
+        <div class="container-title-right" (click)="onClose()"><i class="fa-solid fa-circle-xmark fa-xl"></i></div>
+    </div>
+    <div class="main">
+        <div class="box" *ngFor="let product of order.products">
+            <!-- {{display(product)}} -->
+
+            <!-- <div class="box-top" >
+                <ng-container *ngIf="product.images.length>0">
+                    <div class="box-top-image" *ngFor="let image of product.images">
+                        <img [src]="image.url" alt="">
+                    </div>
+                </ng-container>
+            </div> -->
+            <div class="box-left" >
+                <ng-container *ngIf="product.images.length>0">
+                    <img [src]="product.images[0].url" alt="">
+                </ng-container>
+            </div>
+            <div class="box-center">
+
+                <div class="box-center-top"><H2>{{product.title}}</H2></div>
+                <div class="box-center-middle">
+                    <div class="box-center-middle-item"> {{ product.brand.title }} | </div>
+                    <div class="box-center-middle-item"> {{ product.category.title }}</div>
+                </div>
+                <div class="box-center-bottom">{{product.color}}</div>
+                <!-- <div class="box-center-bottom">Total Ratings:: {{product.totalRatings}} </div> -->
+                <div class="box-center-bottom">Rs.{{product.price}}</div>
+                <div class="box-center-bottom">{{product.description}}</div>
+            </div>
+            <!-- <div class="box-bottom">
+                
+            </div> -->
+        </div>
+        <hr>
+        <div class="details">
+            <div class="details-user">
+                <div class="item">Ordered By::{{order.orderBy.firstName }}{{order.orderBy.lastName}}</div>
+                <div class="item">Email id::{{order.orderBy.email}}</div>
+                <div class="item">Address::{{order.orderBy.address}}</div>
+            </div>
+            <hr>
+            <div class="detail-payment-intent">
+                <div class="item">Order Method: {{order.paymentIntent.method}}</div>
+                <div class="item">Total Amount: {{order.paymentIntent.amount}}</div>
+                <div class="item">Order Status: {{order.orderStatus}}</div>
+            </div>
+        </div>
+    </div>
+</div>

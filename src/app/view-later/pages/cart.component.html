@@ -8,7 +8,10 @@
         <div class="middle-products">
             <!-- <div class="middle-proucts-box" *ngFor="let product of cartDetails.products">
                 {{product.product.title}} -->
-                <div class="box" *ngFor="let item of cartDetails.products">
+            <ng-container *ngFor="let cartProduct of cartProducts">
+
+                <!-- <div class="box" *ngFor="let item of cartDetails.products"> -->
+                <div class="box" *ngFor="let item of cartProduct.products">
                     <div class="box-left" >
                         <ng-container *ngIf="item.product.images.length>0">
                             <img [src]="item.product.images[0].url" alt="">
@@ -36,11 +39,12 @@
                     </div>
                 </div>
             <!-- </div> -->
+            </ng-container>
 
         </div>
     </div>
 
-    <div class="bottom">
+    <div class="bottom" *ngIf="cartProducts.length>0">
         <div class="bottom-buy">
             <button (click)="onEmpty()">Clear the Cart</button>
         </div>
@@ -48,7 +52,13 @@
             <button (click)="onBuy()">Confirm Order</button>
         </div>
         <div class="bottom-total">
-            Total Price: ₹{{cartDetails.cartTotal}}
+            Total Price(GST+): ₹{{cartTotal}}
+        </div>
+    </div>
+
+    <div class="bottom" *ngIf="cartProducts.length<=0">
+        <div class="messge">
+            No item in the Cart!
         </div>
     </div>
 

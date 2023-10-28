@@ -1,0 +1,16 @@
+<div class="recent-orders">
+    <table>
+        <thead>
+            <tr>
+                <th *ngFor="let l of listFormate">{{l}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let order of orders" (click)="viewDetails(order['id'])">
+                <td *ngFor="let l of listFormate">
+                    {{ order[l] }}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

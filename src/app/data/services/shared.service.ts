@@ -14,7 +14,7 @@ export class SharedService {
       type: 'a'
     },
     {
-      routeLink: 'view-later/orders',
+      routeLink: 'orders/',
       icon: 'fa-solid fa-truck-fast',
       label: 'Orders',
       type: 'a'
@@ -45,7 +45,7 @@ export class SharedService {
         type: 'a'
       },
       {
-        routeLink: 'view-later/orders',
+        routeLink: 'orders/',
         icon: 'fa-solid fa-truck-fast',
         label: 'Orders',
         type: 'a'

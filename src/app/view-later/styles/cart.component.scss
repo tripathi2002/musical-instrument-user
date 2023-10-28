@@ -1,5 +1,15 @@
 .container {
 
+    .top{
+        display: flex;
+        margin: 0.2rem 0.625rem;
+        padding: 0.1rem 0.625rem;
+        font-size: larger;
+        font-weight: 700;
+        width: 100%;
+        align-items: center;
+        flex-direction: column;
+    }
     .middle {
 
         .middle-products{
@@ -79,6 +89,12 @@
                 box-shadow: 0.3rem 0.3rem 0.625rem grey;
                 cursor: pointer;
             }
+        }
+
+        .message{
+            width: 40vw;
+            height: 30;
+            margin: auto auto;
         }
     }
 

@@ -28,7 +28,7 @@ export class CartService {
     let headers:HttpHeaders = new HttpHeaders({
       'Authorization': `Bearer ${localStorage.getItem('token')}`
     });
-
+    console.log("_________")
     return this.http.get(`${this.baseUrl}/order`, { headers })
       .pipe(map(res=>res));
     // return this.http.get(`${this.baseUrl}/order`, { headers })
@@ -46,7 +46,18 @@ export class CartService {
   }
 
   getCart(){
-    return this.http.get(`${this.baseUrl}/cart`)
+    let headers:HttpHeaders = new HttpHeaders({
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    })
+    return this.http.get(`${this.baseUrl}/cart`, { headers })
+      .pipe(res=>res);
+  }
+
+  getAllCart(){
+    let headers:HttpHeaders = new HttpHeaders({
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    })
+    return this.http.get(`${this.baseUrl}/cart/list`, { headers })
       .pipe(res=>res);
   }
 

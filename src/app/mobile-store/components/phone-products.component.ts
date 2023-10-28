@@ -73,6 +73,6 @@ export class PhoneProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAll();
-    this.getAllCopy();
+    // this.getAllCopy();
   }
 }
