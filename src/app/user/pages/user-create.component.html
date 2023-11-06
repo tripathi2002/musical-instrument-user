@@ -3,10 +3,7 @@
         {{title}}
     </div>
     <div class="form">
-        <form class="form-menu" 
-            [formGroup]="userDetails"
-            (ngSubmit)="onSubmit()"
-        >
+        <form class="form-menu" [formGroup]="formData" (ngSubmit)="onSubmit()">
             <div class="form-menu-item" *ngFor="let item of userbase">
                 <div class="form-menu-item-label">
                     <label [for]="item.id" class="form-menu-item-label-name">
@@ -14,42 +11,42 @@
                     </label>
                 </div>
                 <div class="form-menu-item-name">
-                    <input  [type]="item.type" class="form-menu-item-name-value"
-                        [id]="item.id"
-                        [name]="item.name"
-                        [formControlName]="item.name"
-                    >
+                    <input [type]="item.type" class="form-menu-item-name-value" [id]="item.id" [name]="item.name"
+                        [formControlName]="item.name">
+                    <div *ngIf="item['validators'] && formData.get(item.name)?.invalid && formData.get(item.name)?.touched"
+                        class="error-message">
+                        <!-- {{item.err[0].message}} -->
+                        <ng-container *ngFor="let e of item.err">
+                            <div *ngIf="formData.get(item.name)?.errors[e.key]">
+                                {{e.message}}
+                            </div>
+                        </ng-container>
+                    </div>
                 </div>
             </div>
             <div class="form-menu-submit">
-                <button class="form-menu-submit-btn" type="submit" >Submit</button>
+                <button class="form-menu-submit-btn" type="submit" [disabled]="formData.invalid">Submit</button>
             </div>
+
         </form>
     </div>
-    <div  class="container-skip">
-        <ng-container *ngIf="toggle; else toggleOff" >
-            Already have an account! 
-            <a routerLink="../login"
-            >Login</a>
+    <div class="container-skip">
+        <ng-container *ngIf="toggle; else toggleOff">
+            Already have an account!
+            <a routerLink="../login">Login</a>
         </ng-container>
     </div>
 
     <!-- <div class="error" [ngClass]="isError?'pluse':''"> -->
-        <div class="message" 
-        [@error]="isError?'start':'end'" 
-        [@success]="isSuccess?'start':'end'"  
-    >
+    <div class="message" [@error]="isError?'start':'end'" [@success]="isSuccess?'start':'end'">
         <span>{{message}}</span>
     </div>
-    <div class="loading-box"
-    *ngIf="isLoading"
-    >
-    <img class="lodaing-box-img" src="../../../assets/images/loading.gif" alt="loading image">
+    <div class="loading-box" *ngIf="isLoading">
+        <img class="lodaing-box-img" src="../../../assets/images/loading.gif" alt="loading image">
     </div>
 </div>
 
 <ng-template #toggleOff>
-        New User!
-        <a routerLink="../create"
-        >SignIn</a>
+    New User!
+    <a routerLink="../create">SignIn</a>
 </ng-template>

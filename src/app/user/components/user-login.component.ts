@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { UserLoginFormate } from '../data/user-login-data';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { User } from '../data/user';
 import { Router } from '@angular/router';
@@ -28,15 +28,20 @@ export class UserLoginComponent extends actions {
 
 
   data = {
-    email: [''],
-    password: [''],
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(8)]],
   }
 
-  userDetails = this.fb.group(this.data);
+  formData = this.fb.group(this.data);
 
   onSubmit(): void {
+    if(this.formData.invalid) {
+      this.trueError('enter correct values')
+    }
+    console.log(this.formData.value);
+    console.log(this.formData.valid);
     this.trueLoading();
-    this.us.LoginUser(this.userDetails.value)
+    this.us.LoginUser(this.formData.value)
     .subscribe(
       (data: User)=>{
         this.trueSuccess('Login Successfully');
@@ -56,9 +61,17 @@ export class UserLoginComponent extends actions {
         this.trueError(err.error.message);
         this.timelate();
       },()=>{
-        this.userDetails = this.fb.group(this.data);
+        this.formData = this.fb.group(this.data);
     })
 
   }
+
+  
+  onSubmitCopy(){
+    console.log("hello");
+    console.error(this.formData.invalid) 
+    this.trueError('enter correct values')
+    // console.log(this.formData.get(name))
+  }  
 
 }

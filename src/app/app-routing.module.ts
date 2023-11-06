@@ -25,8 +25,8 @@ const routes: Routes = [
     path: 'view-later',
     loadChildren: ()=>import('./view-later/view-later.module').then(m=>m.ViewLaterModule)
   },
-  
-  // { path: 'cart', component: ActionComponent },
+
+  { path: 'cart', component: ActionComponent },
 ];
 
 @NgModule({

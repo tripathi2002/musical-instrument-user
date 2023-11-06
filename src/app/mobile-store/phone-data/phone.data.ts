@@ -9,54 +9,36 @@ export const centerMiddle = [
       outlet:1,
       items:[
          {
-            title:'Android Phones around Rs 10,000',
+            title:'Phones Under Rs10,000',
             img:'assets/images/mobile_user_img/android-phone.png',
-            routerlink:'phones'
+            routerlink:''
          },
          {
-            title:'Android Phones around Rs 10,000',
+            title:'Phone Under 6GB ram',
             img:'assets/images/mobile_user_img/6gb-ram.png',
-            routerlink:'phonefinder'
+            routerlink:''
          },
          {
-            title:'Android Phones around Rs 10,000',
+            title:'Best 5G Phones',
             img:'assets/images/mobile_user_img/5g.png',
-            routerlink:'phonefinder'
+            routerlink:''
          },
          {
-            title:'Android Phones around Rs 10,000',
+            title:'Best Power Backup',
+            img:'assets/images/mobile_user_img/wireless-charging.png',
+            routerlink:''
+         },
+         {
+            title:'Android Phones',
             img:'assets/images/mobile_user_img/android-phone.png',
-            routerlink:'phonefinder'
+            routerlink:'',
          },
-         {
-            title:'Android Phones around Rs 10,000',
-            img:'assets/images/mobile_user_img/android-phone.png'
-         },
-         {
-            title:'Android Phones around Rs 10,000',
-            img:'assets/images/mobile_user_img/android-phone.png',
-            routerlink:'phonefinder'
-         },
-         {
-            title:'Android Phones around Rs 10,000',
-            img:'assets/images/mobile_user_img/android-phone.png',
-            routerlink:'phonefinder'
-         },
-         {
-            title:'Android Phones around Rs 10,000',
-            img:'assets/images/mobile_user_img/android-phone.png',
-            routerlink:'phonefinder'
-         },
-         {
-            title:'Android Phones around Rs 10,000',
-            img:'assets/images/mobile_user_img/android-phone.png',
-            routerlink:'phonefinder'
-         },
-         {
-            title:'Android Phones around Rs 10,000',
-            img:'assets/images/mobile_user_img/android-phone.png',
-            routerlink:'phonefinder'
-         }
+         // {
+         //    title:'Android Phones around Rs 10,000',
+         //    img:'assets/images/mobile_user_img/android-phone.png',
+         //    routerlink:'phonefinder'
+         // },
+        
       ]
 
    },

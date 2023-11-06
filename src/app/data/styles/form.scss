@@ -41,6 +41,12 @@
                     padding: 0.5rem 0 0.2rem 1rem;
                     margin-left: 1rem;
                 }
+
+                .error-message {
+                    color: red; // Set the text color to red for error messages
+                    font-size: 0.8rem; // Adjust the font size
+                    margin-top: 0.2rem; // Add some top margin to separate the error message from the input field
+                }
             }
 
             .form-menu-submit {
