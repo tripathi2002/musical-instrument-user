@@ -15,6 +15,9 @@ import { CdkMenuModule } from '@angular/cdk/menu';
 import { DialogModule } from '@angular/cdk/dialog';
 import { SharedService } from './data/services/shared.service';
 import { ActionComponent } from './data/action.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MockInterceptor } from './data/services/mock.interceptor';
+
 
 @NgModule({
   declarations: [
@@ -34,8 +37,10 @@ import { ActionComponent } from './data/action.component';
     CdkMenuModule,
     BrowserAnimationsModule,
     DialogModule,
+    HttpClientModule,
   ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: MockInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

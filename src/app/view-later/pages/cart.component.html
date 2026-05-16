@@ -1,65 +1,88 @@
-<div class="container">
-    <div class="top">
-        <div class="title">
-            {{title}}
-        </div>
+<div class="cart-container">
+    <div class="cart-header">
+        <h1 class="cart-title">{{title}}</h1>
+        <p class="cart-subtitle" *ngIf="cartProducts?.length > 0">You have {{cartProducts[0]?.products?.length || 0}} items in your cart</p>
     </div>
-    <div class="middle">
-        <div class="middle-products">
-            <!-- <div class="middle-proucts-box" *ngFor="let product of cartDetails.products">
-                {{product.product.title}} -->
-            <ng-container *ngFor="let cartProduct of cartProducts">
 
-                <!-- <div class="box" *ngFor="let item of cartDetails.products"> -->
-                <div class="box" *ngFor="let item of cartProduct.products">
-                    <div class="box-left" >
-                        <ng-container *ngIf="item.product.images.length>0">
-                            <img [src]="item.product.images[0].url" alt="">
+    <div class="cart-content" *ngIf="cartProducts?.length > 0 && cartProducts[0]?.products?.length > 0; else emptyCart">
+        <!-- Cart Items List -->
+        <div class="cart-items">
+            <ng-container *ngFor="let cartProduct of cartProducts">
+                <div class="cart-card glass" *ngFor="let item of cartProduct.products">
+                    <div class="cart-item-image">
+                        <ng-container *ngIf="item.product?.images?.length > 0">
+                            <img [src]="item.product.images[0].url" [alt]="item.product.title">
                         </ng-container>
                     </div>
-                    <div class="box-center" >
-                        <div class="box-center-item"><H2>{{item.product.title}}</H2></div>
-                        <!-- <div class="box-center-item">Brand: {{item.product.brand.title}}</div> -->
-                        <!-- <div class="box-center-item">Category: {{item.product.category.title}}</div> -->
-                        <div class="box-center-item">Color( {{item.color}} ):<b>  X  </b> {{item.count}}Qty. </div>
-                        <div class="box-center-item">Price: Rs.{{item.price}}</div>
-                        <!-- <div class="box-center-item">Total Selected : </div> -->
+                    
+                    <div class="cart-item-details">
+                        <div class="cart-item-header">
+                            <h2 class="product-name">{{item.product.title}}</h2>
+                            <button class="remove-btn" (click)="onRemove(item.product._id)">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </div>
                         
-                    </div>
-                    <div class="box-right">
-                        <!-- <div class="box-right-cart">
-                            <button (click)="onRemove(item.product._id)">Remove </button>
-                        </div> -->
-                        <!-- <div class="box-right-view">
-                            <button (click)="viewDetails(item.product._id)">ViewMoreDetails</button>
-                        </div> -->
-                        <!-- <div class="box-right-buy">
-                            <button (click)="openBuy(item)">Buy Now </button>
-                        </div> -->
+                        <div class="product-meta">
+                            <span class="meta-badge">Color: {{item.color}}</span>
+                            <span class="meta-badge">Qty: {{item.count}}</span>
+                        </div>
+
+                        <div class="cart-item-footer">
+                            <div class="price-tag">
+                                <span class="currency">Rs.</span>
+                                <span class="amount">{{item.price}}</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            <!-- </div> -->
             </ng-container>
+        </div>
 
+        <!-- Order Summary Sidebar -->
+        <div class="cart-summary glass">
+            <h2 class="summary-title">Order Summary</h2>
+            
+            <div class="summary-details">
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span>Rs. {{cartTotal}}</span>
+                </div>
+                <div class="summary-row">
+                    <span>Shipping</span>
+                    <span class="free">Free</span>
+                </div>
+                <div class="summary-row">
+                    <span>Estimated Tax (GST+)</span>
+                    <span>Calculated at checkout</span>
+                </div>
+                <div class="summary-divider"></div>
+                <div class="summary-row total">
+                    <span>Total</span>
+                    <span class="total-amount">₹{{cartTotal}}</span>
+                </div>
+            </div>
+
+            <div class="summary-actions">
+                <button class="btn-premium w-full" (click)="onBuy()">Confirm Order</button>
+                <button class="btn-outline w-full" (click)="onEmpty()">Clear the Cart</button>
+            </div>
+            
+            <div class="secure-checkout">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>Secure Checkout Guaranteed</span>
+            </div>
         </div>
     </div>
 
-    <div class="bottom" *ngIf="cartProducts.length>0">
-        <div class="bottom-buy">
-            <button (click)="onEmpty()">Clear the Cart</button>
+    <ng-template #emptyCart>
+        <div class="empty-cart-state glass">
+            <div class="empty-icon">
+                <i class="fa-solid fa-cart-shopping"></i>
+            </div>
+            <h2>Your cart is empty</h2>
+            <p>Looks like you haven't added anything to your cart yet.</p>
+            <button class="btn-premium" routerLink="/mobile-store">Go Shopping</button>
         </div>
-        <div class="bottom-buy">
-            <button (click)="onBuy()">Confirm Order</button>
-        </div>
-        <div class="bottom-total">
-            Total Price(GST+): ₹{{cartTotal}}
-        </div>
-    </div>
-
-    <div class="bottom" *ngIf="cartProducts.length<=0">
-        <div class="messge">
-            No item in the Cart!
-        </div>
-    </div>
-
+    </ng-template>
 </div>

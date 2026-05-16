@@ -1,52 +1,83 @@
-<div class="container">
-     <div class="container-title">
-        <div class="container-title-left"> {{title}} </div>
-        <div class="container-title-right" (click)="onClose()"><i class="fa-solid fa-circle-xmark fa-xl"></i></div>
+<div class="details-wrapper glass">
+    <div class="details-header">
+        <div class="brand-badge" *ngIf="product?.brand">{{product.brand.title}}</div>
+        <button class="close-btn" (click)="onClose()">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
     </div>
-    <div class="box">
-        <div class="box-left" >
-            <ng-container *ngIf="product.images.length>0">
-                <div class="box-left-image" *ngFor="let image of product.images">
-                    <img [src]="image.url" alt="">
+
+    <div class="details-content" *ngIf="product">
+        <!-- Image Showcase -->
+        <div class="image-gallery">
+            <div class="main-image-container">
+                <ng-container *ngIf="product?.images?.length > 0">
+                    <img [src]="product.images[0].url" [alt]="product.title">
+                </ng-container>
+            </div>
+            <div class="thumbnail-list" *ngIf="product?.images?.length > 1">
+                <div class="thumbnail" *ngFor="let image of product.images">
+                    <img [src]="image.url" alt="thumbnail">
                 </div>
-            </ng-container>
+            </div>
         </div>
-        <div class="box-center">
-            <div class="box-center-top"><H2>{{product.title}}</H2></div>
-            <div class="box-center-middle">
-                <div class="box-center-middle-item">Brand: {{product.brand.title}}</div>
-                <div class="box-center-middle-item">Category:{{product.category.title}}</div>
+
+        <!-- Product Info -->
+        <div class="product-info">
+            <div class="info-header">
+                <h1 class="product-title">{{product.title}}</h1>
+                <div class="product-rating" *ngIf="product.totalrating">
+                    <i class="fa-solid fa-star"></i>
+                    <span>{{product.totalrating}}</span>
+                </div>
             </div>
-            <div class="box-center-bottom">Color:{{product.color}}</div>
-            <div class="box-center-bottom">Total Ratings{{product.totalRatings}}</div>
-            <div class="box-center-bottom">Rs.{{product.price}}</div>
-            <div class="box-center-middle-item">{{product.description}}</div>
+
+            <div class="price-section">
+                <span class="currency">Rs.</span>
+                <span class="amount">{{product.price}}</span>
+            </div>
+
+            <div class="spec-section">
+                <div class="spec-item">
+                    <span class="spec-label">Category</span>
+                    <span class="spec-value">{{product.category?.title || 'Smartphones'}}</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-label">Color</span>
+                    <span class="spec-value">{{product.color}}</span>
+                </div>
+            </div>
+
+            <div class="description-section">
+                <h3 class="section-title">Overview</h3>
+                <p class="description">{{product.description}}</p>
+            </div>
+
+            <div class="action-section">
+                <div class="quantity-selector">
+                    <button class="qty-btn" (click)="count = count > 1 ? count - 1 : 1">
+                        <i class="fa-solid fa-minus"></i>
+                    </button>
+                    <span class="qty-value">{{count}}</span>
+                    <button class="qty-btn" (click)="count = count + 1">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                </div>
+                <button class="btn-premium flex-1" (click)="addToCart()">
+                    <i class="fa-solid fa-cart-plus"></i>
+                    <span>ADD TO CART</span>
+                </button>
+            </div>
         </div>
-        <div class="action">
-            <div class="action-quantity">
-                Quantity: <button (click)="count=count-1">  -  </button> {{count}} <button (click)="count=count+1">  +  </button>
-            </div>
-            <div class="action-btn">
-                <button (click)="addToCart()">ADD TO CART</button>
-            </div>
+    </div>
+
+    <!-- Feedback & Loading -->
+    <div class="action-container">
+        <div class="message-toast glass" *ngIf="isError || isSuccess" [@error]="isError?'start':'end'" [@success]="isSuccess?'start':'end'">
+            <span>{{message}}</span>
+        </div>
+        
+        <div class="loading-overlay" *ngIf="isLoading">
+            <div class="loader"></div>
         </div>
     </div>
 </div>
-
-
-<!-- // action viewer template-->
-<div class="action-container">
-
-    <div class="message" 
-        [@error]="isError?'start':'end'" 
-        [@success]="isSuccess?'start':'end'"  
-    >
-        <span>{{message}}</span>
-    </div>
-    <div class="action-blur"  *ngIf="isLoading"  [@loading]="isLoading?'start':'end'"></div>
-        <div class="loading-box"
-          *ngIf="isLoading"
-        >
-          <img class="lodaing-box-img" src="../../../assets/images/loading.gif" alt="loading image">
-        </div>
-  </div>

@@ -1,17 +1,42 @@
 .container {
     display: flex;
-    justify-content: space-evenly;
+    gap: 2rem;
+    padding: 6rem 2rem 2rem 2rem; // 6rem top padding for fixed header
+    max-width: 1400px;
+    margin: 0 auto;
 
-    .left{
-        width: 20%;
-        background: #fff;
-        margin-left: .625rem;
+    .left {
+        width: 280px;
+        flex-shrink: 0;
+        border-radius: 1.5rem;
+        padding: 1.5rem;
+        height: fit-content;
+        position: sticky;
+        top: 6rem;
     }
 
     .center {
+        flex: 1;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        width: 100%;    
+        gap: 2rem;
+        min-width: 0; // Prevent flex item from overflowing
+    }
+
+    .right {
+        display: none; // Hidden for now as it was empty
+    }
+}
+
+@media (max-width: 1024px) {
+    .container {
+        flex-direction: column;
+        padding: 6rem 1rem 1rem 1rem;
+
+        .left {
+            width: 100%;
+            position: relative;
+            top: 0;
+        }
     }
 }

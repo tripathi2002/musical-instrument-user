@@ -64,11 +64,17 @@ export class CartComponent implements OnInit {
   }
   
   calculateCartTotal(){
+    this.cartTotal = 0;
+    if (!this.cartProducts || !Array.isArray(this.cartProducts)) return;
+    
     this.cartProducts.forEach(element => {
-      this.cartTotal += element.cartTotal; 
+      if (element.cartTotal) {
+        this.cartTotal += element.cartTotal; 
+      }
     });
-    if(this.cartTotal>500){
-      this.cartTotal +=200
+    
+    if(this.cartTotal > 500){
+      this.cartTotal += 200; // Adding dummy shipping/tax
     }
   }
   ngOnInit(): void {

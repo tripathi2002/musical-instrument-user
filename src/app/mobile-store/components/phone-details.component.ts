@@ -50,8 +50,8 @@ export class PhoneDetailsComponent extends actions implements OnInit {
     this.trueLoading();
     this.ps.addToCart(data)
       .subscribe((res) => {
-        this.trueSuccess("Created User");
-        this.message = 'Congratulation!!';
+        this.trueSuccess("Added to Cart");
+        this.message = 'Success! Product added to your cart.';
 
         // alert("Add the product in cart");
         setTimeout(() => {
@@ -72,6 +72,7 @@ export class PhoneDetailsComponent extends actions implements OnInit {
       .subscribe((res) => {
         console.log(res);
         this.product = res['product'];
+        this.title = this.product.title;
       }, (err) => {
         console.log(err);
       })

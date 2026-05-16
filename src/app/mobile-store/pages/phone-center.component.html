@@ -1,47 +1,46 @@
 <div class="center-top">
     <div class="center-top-img">
-        <img [src]="centerTop.background" alt="">
+        <img [src]="centerTop.background" alt="Hero Background">
     </div>
-    <div class="center-top-title">
-        {{centerTop.title}}
+    <div class="hero-content">
+        <span class="hero-badge">New Arrival 2026</span>
+        <h1>{{centerTop.title}}</h1>
+        <p>Experience the next generation of mobile technology with our latest collection of premium smartphones.</p>
+        <button class="btn-premium">Shop Now</button>
     </div>
 </div>
 
 <div class="center-middle" *ngFor="let box of centerMiddle">
     <div class="center-middle-box">
         <div class="center-middle-box-head">{{box.title}}</div>
-        <div class="center-middle-box-main" *ngIf="box['items'].length>0">
+        <div class="center-middle-box-main" *ngIf="box['items'].length > 0">
             <ng-container 
-                [ngTemplateOutlet]="box.outlet===1?first:last"
-                [ngTemplateOutletContext]="{items:box.items}"
+                [ngTemplateOutlet]="box.outlet === 1 ? first : last"
+                [ngTemplateOutletContext]="{items: box.items}"
             >
             </ng-container>
         </div>
     </div>
 </div>
 
-<!-- phone proucts rendering -->
+<!-- phone products rendering -->
 <app-phone-products></app-phone-products>
 
 <ng-template #first let-items="items">
-    <div class="center-middle-box-main-item" *ngFor="let item of items">
-        <a [routerLink]="item.routerlink">
-            <div class="center-middle-box-main-item-feature-img">
-                <img [src]="item.img" alt="">
-            </div>
-            <div class="center-middle-box-main-item-feature-tit">
-                {{ item.title}}
-            </div>
-        </a>
+    <div class="center-middle-box-main-item" *ngFor="let item of items" [routerLink]="item.routerlink">
+        <div class="center-middle-box-main-item-feature-img">
+            <img [src]="item.img" [alt]="item.title">
+        </div>
+        <div class="center-middle-box-main-item-feature-tit">
+            {{ item.title }}
+        </div>
     </div>
 </ng-template>
 
 <ng-template #last let-items="items">
-    <div class="center-middle-box-main-item" *ngFor="let item of items">
-        <a [routerLink]="item.routerlink">
-            <div class="center-middle-box-main-item-feature-img">
-                <img [src]="item.img" alt="">
-            </div>
-        </a>
+    <div class="center-middle-box-main-item" *ngFor="let item of items" [routerLink]="item.routerlink">
+        <div class="center-middle-box-main-item-feature-img">
+            <img [src]="item.img" alt="Feature Image">
+        </div>
     </div>
 </ng-template>

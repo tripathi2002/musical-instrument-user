@@ -1,52 +1,59 @@
-<div class="container">
-    <div class="container-title">
-        {{title}}
-    </div>
-    <div class="form">
-        <form class="form-menu" [formGroup]="formData" (ngSubmit)="onSubmit()">
-            <div class="form-menu-item" *ngFor="let item of userbase">
-                <div class="form-menu-item-label">
-                    <label [for]="item.id" class="form-menu-item-label-name">
-                        {{ item.placeholder }}
-                    </label>
-                </div>
-                <div class="form-menu-item-name">
-                    <input [type]="item.type" class="form-menu-item-name-value" [id]="item.id" [name]="item.name"
-                        [formControlName]="item.name">
+<div class="auth-wrapper">
+    <div class="auth-container glass">
+        <div class="auth-header">
+            <div class="auth-logo">VT</div>
+            <h1 class="auth-title">{{title}}</h1>
+            <p class="auth-subtitle">Welcome back! Please enter your details.</p>
+        </div>
+
+        <form class="auth-form" [formGroup]="formData" (ngSubmit)="onSubmit()">
+            <div class="form-group" *ngFor="let item of userbase">
+                <label [for]="item.id" class="form-label">{{ item.placeholder }}</label>
+                <div class="input-wrapper">
+                    <input 
+                        [type]="item.type" 
+                        class="form-input" 
+                        [id]="item.id" 
+                        [name]="item.name"
+                        [formControlName]="item.name"
+                        [placeholder]="'Enter your ' + item.placeholder.toLowerCase()"
+                    >
                     <div *ngIf="item['validators'] && formData.get(item.name)?.invalid && formData.get(item.name)?.touched"
                         class="error-message">
-                        <!-- {{item.err[0].message}} -->
                         <ng-container *ngFor="let e of item.err">
-                            <div *ngIf="formData.get(item.name)?.errors[e.key]">
+                            <span *ngIf="formData.get(item.name)?.errors?.[e.key]">
                                 {{e.message}}
-                            </div>
+                            </span>
                         </ng-container>
                     </div>
                 </div>
             </div>
-            <div class="form-menu-submit">
-                <button class="form-menu-submit-btn" type="submit" [disabled]="formData.invalid">Submit</button>
+
+            <div class="form-actions">
+                <button class="btn-premium w-full" type="submit" [disabled]="formData.invalid">
+                    {{title}}
+                </button>
             </div>
-
         </form>
-    </div>
-    <div class="container-skip">
-        <ng-container *ngIf="toggle; else toggleOff">
-            Already have an account!
-            <a routerLink="../login">Login</a>
-        </ng-container>
+
+        <div class="auth-footer">
+            <ng-container *ngIf="toggle; else toggleOff">
+                <span>Already have an account?</span>
+                <a routerLink="../login">Login</a>
+            </ng-container>
+            <ng-template #toggleOff>
+                <span>Don't have an account?</span>
+                <a routerLink="../create">Sign up for free</a>
+            </ng-template>
+        </div>
     </div>
 
-    <!-- <div class="error" [ngClass]="isError?'pluse':''"> -->
-    <div class="message" [@error]="isError?'start':'end'" [@success]="isSuccess?'start':'end'">
+    <!-- Feedback Messages -->
+    <div class="message-toast glass" *ngIf="isError || isSuccess" [@error]="isError?'start':'end'" [@success]="isSuccess?'start':'end'">
         <span>{{message}}</span>
     </div>
-    <div class="loading-box" *ngIf="isLoading">
-        <img class="lodaing-box-img" src="../../../assets/images/loading.gif" alt="loading image">
+    
+    <div class="loading-overlay" *ngIf="isLoading">
+        <div class="loader"></div>
     </div>
 </div>
-
-<ng-template #toggleOff>
-    New User!
-    <a routerLink="../create">SignIn</a>
-</ng-template>

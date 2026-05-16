@@ -1,27 +1,20 @@
 <div class="container">
     <div class="box" *ngFor="let product of products">
-        <div class="box-left" >
-            <ng-container *ngIf="product.images.length>0">
-                <img [src]="product.images[0].url" alt="">
+        <div class="box-left">
+            <ng-container *ngIf="product?.images?.length > 0">
+                <img [src]="product.images[0].url" [alt]="product.title">
             </ng-container>
         </div>
-        <div class="box-center" >
-            <div class="box-center-item"><H2>{{product.title}}</H2></div>
-            <div class="box-center-item">{{product.brand.title}}</div>
-            <div class="box-center-item">{{product.category.title}}</div>
-            <div class="box-center-item">Rs.{{product.price}}</div>
+        <div class="box-center">
+            <div class="box-center-item brand">{{product.brand.title}}</div>
+            <div class="box-center-item"><h2>{{product.title}}</h2></div>
+            <div class="box-center-item category">{{product.category.title}}</div>
+            <div class="box-center-item price">{{product.price}}</div>
         </div>
         <div class="box-right">
-            <!-- <div class="box-right-cart">
-                <button (click)="addToWishlist(product._id)">Add to WishList</button>
-            </div> -->
             <div class="box-right-view">
-                <button (click)="viewDetails(product._id)">ViewMoreDetails</button>
+                <button (click)="viewDetails(product._id)">View Details</button>
             </div>
-            <!-- <div class="box-right-buy">
-                <button (click)="openBuy(item)">Buy Now </button>
-            </div> -->
         </div>
     </div>
 </div>
-

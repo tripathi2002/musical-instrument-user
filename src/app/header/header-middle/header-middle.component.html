@@ -1,5 +1,5 @@
 <div class="head">
-    <div class="head-content">
+    <div class="head-content glass">
         
         <div class="head-content-left">
             <div class="logo-container">
@@ -71,7 +71,7 @@
 </div>
 
 <ng-template #searchOverlay>
-    <div class="overlay overlay-search overlay-fall" cdkMenu>
+    <div class="overlay overlay-search overlay-fall glass" cdkMenu>
         <input type="search" class="search" placeholder="Search...">
         <button class="search-btn">
             <i class="fa-solid fa-magnifying-glass search-icon"></i>
@@ -80,7 +80,7 @@
 </ng-template>
 
 <ng-template #languageOverlay>
-    <div class="overlay overlay-language overlay-fall" cdkMenu>
+    <div class="overlay overlay-language overlay-fall glass" cdkMenu>
         <ul>
             <li *ngFor="let lang of languages" cdkMenuItem>
                 <img [src]="'assets/flags/'+ lang.flag + '.jpg'" alt="flag">
@@ -91,7 +91,7 @@
 </ng-template>
 
 <ng-template #userOverlay>
-    <div class="overlay overlay-user overlay-fall" cdkMenu>
+    <div class="overlay overlay-user overlay-fall glass" cdkMenu>
         <ul>
             <li *ngFor="let item of userItems">
 

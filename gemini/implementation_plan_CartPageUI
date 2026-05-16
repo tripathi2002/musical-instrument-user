@@ -1,0 +1,31 @@
+# Implementation Plan: UI Overhaul - Cart Page
+
+The goal is to create a premium, efficient cart experience that matches the new design system.
+
+## Proposed Changes
+
+### Cart Component Redesign
+
+#### [MODIFY] [cart.component.html](file:///d:/2026/project/ecommerce/musical-instrument-user/src/app/view-later/pages/cart.component.html)
+- Wrap the cart in a `glass` container.
+- Use a 2-column layout on desktop: Left for items, Right for Order Summary.
+- Redesign item rows as sleek cards.
+- Add modern quantity controls and remove buttons.
+
+#### [MODIFY] [cart.component.scss](file:///d:/2026/project/ecommerce/musical-instrument-user/src/app/view-later/styles/cart.component.scss)
+- Implement the 2-column flex/grid layout.
+- Style item cards with subtle shadows and glassmorphism.
+- Design a premium "Order Summary" card that stays sticky.
+
+### Order Confirmation Modal
+
+#### [MODIFY] [order-confirm.component.scss](file:///d:/2026/project/ecommerce/musical-instrument-user/src/app/view-later/styles/order-confirm.component.scss)
+- Modernize the checkout confirmation modal to match the new UI.
+
+## Verification Plan
+
+### Manual Verification
+- Navigate to `http://localhost:3001/view-later/cart`.
+- Add items to the cart and verify they appear correctly in the new UI.
+- Test the "Clear Cart" and "Confirm Order" actions.
+- Check responsiveness (mobile view should stack the summary at the bottom).

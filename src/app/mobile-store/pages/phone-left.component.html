@@ -2,20 +2,19 @@
     <div class="left-box-heading">
         {{box.heading}}
     </div>
-    <ng-container *ngIf="box.items.length>0" 
+    <ng-container *ngIf="box.items.length > 0" 
         [ngTemplateOutlet]="filters" 
-        [ngTemplateOutletContext]="{items:box.items}"
+        [ngTemplateOutletContext]="{items: box.items}"
     >
     </ng-container>
-    <hr>
 </div>
 
 <ng-template #filters let-items="items">
     <div class="left-box-item" *ngFor="let item of items">
-        <a [routerLink]="item.routerLink">
+        <a [routerLink]="item.routerLink" routerLinkActive="active">
             <div class="left-box-item-value">
                 {{item.label}}
             </div> 
         </a>
-        </div>
+    </div>
 </ng-template>
