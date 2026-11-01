@@ -1,29 +1,46 @@
-Vibhu Tripathi -09/sep/2023 'sanatani' 'Om Namah Shivay' 'JAI SHREE RAM ' 'HAR HAR MHADEV', 
-https://github.com/tripathi2002 , amtri2030@gmail.com
-# MobilestoreUser
+# Musical Instrument Store – Storefront
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.1.
+Customer-facing Angular storefront for the musical instrument e-commerce store. Shoppers browse products, filter them, view details, and manage a cart, wishlist, view-later list and orders.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://127.0.0.1:3001/`. The application will automatically reload if you change any of the source files.
+- Product listing with filter sidebar and product detail page
+- Cart, wishlist, view-later and orders pages
+- Buy and order confirmation flow
+- User login and profile pages
+- Multi-part header (top, middle, bottom navigation)
+- Mock HTTP interceptor with sample data, so the UI runs without a backend
 
-## Code scaffolding
+## Tech stack
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Angular 16 · TypeScript · RxJS · SCSS · Angular CDK
 
-## Build
+## Project structure
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```
+src/app/header/              # header-top / middle / bottom
+src/app/mobile-store/        # product list, filters, details, buy, confirm, cart service
+src/app/data/                # shared services, mock data, mock.interceptor
+src/app/body/
+```
 
-## Running unit tests
+## Getting started
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```bash
+npm install
+npm start          # http://localhost:4200
+npm run build
+```
 
-## Running end-to-end tests
+The real API base URL is `http://127.0.0.1:1000/v3/api`; requests are served by `MockInterceptor` when it is enabled in `app.module.ts`.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Environment variables
 
-## Further help
+None.
+## Screenshots
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+_Screenshots coming soon._
+
+## License
+
+No license file has been added to this repository yet.
